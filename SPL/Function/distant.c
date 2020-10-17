@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+float circle_area(float radius); //prototype of a function
+float Distance(int x1, int y1, int x2, int y2);
+int main()
+{
+    float radius;
+    scanf("%f", &radius);
+    printf("Area of circle is %f\n", circle_area(radius));
+    int x1, x2, y1, y2;
+    scanf("%d%d%d%d", &x1,&y1,&x2,&y2);
+    printf("Distance: %f\n", Distance(x1,y1,x2,y2));
+    return 0;
+}
+float circle_area(float radius){
+    return 3.1416*radius*radius;
+}
+float Distance(int x1, int y1, int x2, int y2)
+{
+    float dist = sqrt( (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) );
+    return dist;
+} 
