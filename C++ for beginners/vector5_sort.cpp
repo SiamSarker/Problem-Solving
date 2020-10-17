@@ -39,5 +39,11 @@ int main()
 
     cout << endl;
 
+    reverse(v.begin(), v.end());
+
+    for(int i : v) cout << i << " ";
+
+    cout << endl;
+
     return 0;
 }
