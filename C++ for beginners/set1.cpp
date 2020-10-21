@@ -11,7 +11,7 @@ using namespace std;
 
 int main()
 {
-    //freopen("set1_file.txt", "r", stdin);
+    freopen("set1_file.txt", "r", stdin);
 
     set <int> st;
 
