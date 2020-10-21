@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include<iostream>
+#include<fstream>
+#include<algorithm>
+#include<vector>
+#include<string>
+using namespace std;
+
+struct Student
+{
+    string name;
+    string id;
+};
+
+
+int main()
+{
+    
+    freopen("struct_file.txt", "r", stdin);
+    int n; cin >> n;
+    vector <Student> v(n);
+    for(int i =0; i < n; i++) cin >> v[i].name >> v[i].id;
+
+    for(Student s : v)
+        cout << s.name << " " << s.id << endl;
+    
+    sort(v.begin(), v.end(), [&](Student a, Student b)
+    {
+        if (a.id == b.id) return a.name < b.name;
+        else return a.id<b.id;
+    });
+
+    for(Student s : v)
+        cout << s.name << " " << s.id << endl;
+    
+    return 0;
+}
