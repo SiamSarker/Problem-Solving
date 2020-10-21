@@ -9,7 +9,7 @@
 
 using namespace std;
 
-int mai()
+int main()
 {
     //freopen("set1_file.txt", "r", stdin);
 
