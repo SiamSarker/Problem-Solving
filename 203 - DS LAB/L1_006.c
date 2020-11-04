@@ -9,8 +9,5 @@ int main()
 
     arr = (int*) malloc(sizeof(n*sizeof(int))); // type casting and memory malloc
 
-
-
-
     return 0;
 }
