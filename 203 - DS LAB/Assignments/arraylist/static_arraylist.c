@@ -8,6 +8,7 @@ void init() {
     length = 0;
 }
 
+
 void print() {
     for(int i=0; i<length; i++) {
         printf("%d ", arr[i]);
@@ -44,6 +45,7 @@ int insert_first(int item) {
     return 0;
 }
 
+
 int insert_last(int item) {
     // write your code here
     if(length < size)   //  condition to see whether the array is full or not
@@ -70,6 +72,7 @@ int insert_at(int item, int pos) {
     }
     return 0;
 }
+
 
 int search(int item) {
     // write your code here
@@ -257,7 +260,5 @@ int main() {
     clear();
     print();
     
-
-
     return 0;
 }
