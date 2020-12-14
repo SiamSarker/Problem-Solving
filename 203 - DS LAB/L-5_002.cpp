@@ -13,6 +13,11 @@ class Stack
     int length;
 
 public:
+
+    Stack (){
+        init();
+    }
+
     void init()
     {
         head = NULL;
@@ -50,7 +55,7 @@ public:
 int main()
 {
     Stack S;
-    S.init();
+    // S.init();    defined in constructor
     S.push(15);
     S.printStack();
     S.push(45);
@@ -63,4 +68,8 @@ int main()
     S.printStack();
     printf("%d has popped\n", S.pop());
     S.printStack();
+
+    Stack S2;
+    S2.push(18);
+    S2.printStack();
 }
