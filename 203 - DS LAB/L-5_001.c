@@ -1,46 +1,50 @@
-#include<stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 
-
-struct Node {
+struct Node
+{
     int data;
     struct Node *next;
 };
 
-struct Node* head;
+struct Node *head;
 int length;
 
-void init() {
+void init()
+{
     head = NULL;
 }
 
-void push(int iteam){
-    struct Node* newNode =(struct Node*) malloc(sizeof(struct Node));
+void push(int iteam)
+{
+    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
     newNode->data = iteam;
     newNode->next = head;
     head = newNode;
 }
 
-int pop(){
-    struct Node* temp = head;
+int pop()
+{
+    struct Node *temp = head;
     int ret = temp->data;
-    head =  head->next;
+    head = head->next;
     free(temp);
     return ret;
 }
 
-void printStack(){
-    struct Node* temp = head;
+void printStack()
+{
+    struct Node *temp = head;
     while (temp != NULL)
     {
         printf("%d ", temp->data);
         temp = temp->next;
     }
     printf("\n");
-    
 }
 
-int main() {
+int main()
+{
     init();
     push(15);
     printStack();
@@ -54,5 +58,4 @@ int main() {
     printStack();
     printf("%d has popped\n", pop());
     printStack();
-
-    }
+}
