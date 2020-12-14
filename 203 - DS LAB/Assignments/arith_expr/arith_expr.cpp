@@ -8,10 +8,10 @@ class Stack
     struct Node
     {
         int data;
-        struct Node* next;
+        struct Node *next;
     };
 
-    struct Node* head;
+    struct Node *head;
     int length;
 
 public:
@@ -26,13 +26,13 @@ public:
     }
     bool is_empty()
     {
-        if(length == 0)
+        if (length == 0)
             return true;
         return false;
     }
     void push(int item)
     {
-        struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+        struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
         newNode->data = item;
         newNode->next = head;
         head = newNode;
@@ -40,7 +40,7 @@ public:
     }
     int pop()
     {
-        struct Node* temp = head;
+        struct Node *temp = head;
         int ret = temp->data;
         head = head->next;
         free(temp);
@@ -53,10 +53,10 @@ public:
     }
     void print()
     {
-        struct Node* temp = head;
-        while(temp != NULL)
+        struct Node *temp = head;
+        while (temp != NULL)
         {
-            printf("%d ",temp->data);
+            printf("%d ", temp->data);
             temp = temp->next;
         }
         printf("\n");
@@ -65,16 +65,15 @@ public:
 
 int applyOp(int val1, int val2, char op)
 {
-    if(op == '+')
+    if (op == '+')
         return val1 + val2;
-    else if(op == '-')
+    else if (op == '-')
         return val1 - val2;
-    else if(op == '*')
+    else if (op == '*')
         return val1 * val2;
-    else if(op == '/')
+    else if (op == '/')
         return val1 / val2;
 }
-
 
 int main()
 {
@@ -85,49 +84,101 @@ int main()
     Stack val_stack;
     Stack op_stack;
 
-	// setp 1:
-    for(int i=0; i<len; i++)
+    // setp 1:
+    for (int i = 0; i < len; i++)
     {
         char token = str[i];
 
-        if('0' <= token && token <= '9')
+        if ('0' <= token && token <= '9')
         {
-			// write your code here
+            // write your code here
+            val_stack.push(token-'0');
         }
-        else if(token == '(')
+        else if (token == '(')
         {
-			// write your code here
+            // write your code here
+            op_stack.push(token);
         }
-        else if(token == ')')
+        else if (token == ')')
         {
-			// write your code here
+            // write your code here
+            while (op_stack.peek() != '(')
+            {
+                char op = op_stack.pop();
+                int a = val_stack.pop();
+                int b = val_stack.pop();
+                int result = applyOp(b, a, op);
+                val_stack.push(result);
+            }
+            op_stack.pop();
         }
-        else if(token == '+')
+        else if (token == '+')
         {
-			// write your code here
+            // write your code here
+            while (op_stack.is_empty() == false && op_stack.peek() != '(')
+            {
+                char op = op_stack.pop();
+                int a = val_stack.pop();
+                int b = val_stack.pop();
+                int result = applyOp(b, a, op);
+                val_stack.push(result);
+            }
+            op_stack.push('+');
         }
-        else if(token == '-')
+        else if (token == '-')
         {
-			// write your code here
+            // write your code here
+            while (op_stack.is_empty() == false && op_stack.peek() != '(')
+            {
+                char op = op_stack.pop();
+                int a = val_stack.pop();
+                int b = val_stack.pop();
+                int result = applyOp(b, a, op);
+                val_stack.push(result);
+            }
+            op_stack.push('-');
         }
-        else if(token == '*')
+        else if (token == '*')
         {
-			// write your code here
+            // write your code here
+            while (op_stack.is_empty() == false && op_stack.peek() == '*')
+            {
+                char op = op_stack.pop();
+                int a = val_stack.pop();
+                int b = val_stack.pop();
+                int result = applyOp(b, a, op);
+                val_stack.push(result);
+            }
+            op_stack.push('*');
         }
-        else if(token == '/')
+        else if (token == '/')
         {
-			// write your code here
+            // write your code here
+            while (op_stack.is_empty() == false && op_stack.peek() == '/')
+            {
+                char op = op_stack.pop();
+                int a = val_stack.pop();
+                int b = val_stack.pop();
+                int result = applyOp(b, a, op);
+                val_stack.push(result);
+            }
+            op_stack.push('/');
         }
     }
-    
-	// step 2:
-	while(!op_stack.is_empty())
+
+    // step 2:
+    while (!op_stack.is_empty())
     {
-		// write your code here
+        // write your code here
+        char op = op_stack.pop();
+        int a = val_stack.pop();
+        int b = val_stack.pop();
+        int result = applyOp(b, a, op);
+        val_stack.push(result);
     }
-    
-	// step 3:
-	printf("%d", val_stack.pop());
+
+    // step 3:
+    printf("%d\n", val_stack.pop());
 
     return 0;
 }
