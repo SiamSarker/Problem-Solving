@@ -44,7 +44,7 @@ public:
 
     bool isEmpty()
     {
-        if(length == 0)
+        if (length == 0)
             return true;
         return false;
     }
@@ -109,10 +109,10 @@ public:
         length--;
         return ret;
     }
-    
+
     bool isEmpty()
     {
-        if(length == 0)
+        if (length == 0)
             return true;
         return false;
     }
@@ -140,15 +140,17 @@ int main()
     q.printStack();
     q.enqueue(23);
     q.printStack();
-    
-     Stack s;
-     while(q.isEmpty() == false){
-         s.push(q.dequeue());
-     }
-     while(s.isEmpty() == false){
-         q.enqueue(s.pop());
-     }
-     q.printStack();
-     s.printStack();
-     return 0;
+
+    Stack s;
+    while (q.isEmpty() == false)
+    {
+        s.push(q.dequeue());
+    }
+    while (s.isEmpty() == false)
+    {
+        q.enqueue(s.pop());
+    }
+    q.printStack();
+    s.printStack();
+    return 0;
 }
