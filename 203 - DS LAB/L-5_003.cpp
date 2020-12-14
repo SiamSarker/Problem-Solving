@@ -49,7 +49,7 @@ public:
         return false;
     }
 
-    void printStack()
+    void print()
     {
         struct Node *temp = head;
         while (temp != NULL)
@@ -117,7 +117,7 @@ public:
         return false;
     }
 
-    void printStack()
+    void print()
     {
         struct Node *temp = head;
         while (temp != NULL)
@@ -133,13 +133,13 @@ int main()
 {
     Queue q;
     q.enqueue(15);
-    q.printStack();
+    q.print();
     q.enqueue(17);
-    q.printStack();
+    q.print();
     q.enqueue(19);
-    q.printStack();
+    q.print();
     q.enqueue(23);
-    q.printStack();
+    q.print();
 
     Stack s;
     while (q.isEmpty() == false)
@@ -150,7 +150,7 @@ int main()
     {
         q.enqueue(s.pop());
     }
-    q.printStack();
-    s.printStack();
+    q.print();
+    s.print();
     return 0;
 }
