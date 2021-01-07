@@ -14,7 +14,7 @@ class BST {
         newNode->data = value;
         newNode->left = NULL;
         newNode->right = NULL;
-        return newNode;
+        return newNode; 
     }
 public:
     treeNode* root;
