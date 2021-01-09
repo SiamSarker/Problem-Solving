@@ -405,7 +405,7 @@ BST Set_Intersection(BST x, BST y)
         strcpy(str, q.peek_queue());
         q.dequeue();
 
-        // if the item is not already in z, add it to z
+        // if the item also found in y, add it to z
         if( w.search(str) != NULL )
         {
             z.insert(str);
@@ -432,7 +432,7 @@ BST Set_Minus(BST x, BST y)
         strcpy(str, q.peek_queue());
         q.dequeue();
 
-        // if the item is not already in z, add it to z
+        // if the item is not found in y, add it to z
         if(w.search(str) == NULL)
         {
             z.insert(str);
