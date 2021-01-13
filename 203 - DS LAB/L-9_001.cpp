@@ -16,6 +16,9 @@ class BST {
         newNode->right = NULL;
         return newNode; 
     }
+
+
+    
 public:
     treeNode* root;
     BST() {
