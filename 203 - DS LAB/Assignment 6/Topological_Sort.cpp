@@ -197,12 +197,30 @@ public:
     }
     void DFS_Visit_topo(int u, int color[], int d[], int f[], int par[], int& time, Linked_list& Z)
     {
-        /* write your code here
-         *
-         *
-         *
-         *
-         */
+
+        // write your code here
+
+        color[u] = GREY;        //  set vertex to GREY color 
+        time = time + 1;        // time increase
+        d[u] = time;            //  discovery time
+
+        Node* temp = LL[u].head;        //  head node for following adjacency vetices
+        
+        while(temp != NULL) {           //  traverse the adjacency vertices
+            int v = temp->vertex;
+            if(color[v] == WHITE) {     //  check whether is it white
+                par[v] = u;             //  add parent
+                DFS_Visit_topo(v, color, d, f, par, time, Z);       //  call recursive DFS visit topo
+            }
+            temp = temp->next;              //  next vertex
+        }
+
+        Z.insert(u);                //  finished vertex added to the new linked list
+        color[u] = BLACK;           //  set vertex to GREY color 
+        time = time + 1;            // time increase
+        f[u] = time;                //  finishing time
+
+
     }
     void DFS_topo(Linked_list& Z)
     {
@@ -213,12 +231,23 @@ public:
         int time; // tracks the time
 		// you will need to pass these as parameters to DFS_Visit
 
-        /* write your code here
-         *
-         *
-         *
-         *
-         */
+        // write your code here
+
+        for(int i=0; i<N_VERTEX; i++) {             //  travarse every vertex                   
+            color[i] = WHITE;                       //  make every vertex white
+            par[i] = NIL;                           //  make parents NULL
+        }
+
+        time = 0;                                   //  time variable
+
+        for(int i=0; i<N_VERTEX; i++) {             //  travarse each vertex
+            if(color[i] == WHITE){                  //  check whether is it white
+                DFS_Visit_topo(i, color, d, f , par, time, Z);      //  call DFS Visit with a extra linked list
+            }
+            
+        }
+
+
 
         // print the results
         printf("Vertex        : ");
@@ -279,7 +308,7 @@ int main()
 
     G1.print_graph();
 
-    //G1.topological_sort();
+    G1.topological_sort();
 
     return 0;
 

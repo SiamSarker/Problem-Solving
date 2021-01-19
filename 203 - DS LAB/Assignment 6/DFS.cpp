@@ -207,34 +207,31 @@ public:
 
     void DFS_Visit(int u, int color[], int d[], int f[], int par[], int& time)
     {
-        
-        
-        color[u] = GREY;
-        time = time + 1;
-        d[u] = time;
 
-        Node* temp = LL[u].head;
+        // write your code here
         
-        while(temp != NULL) {
-            int v = temp->vertex;
-            if(color[v] == WHITE) {
-                par[v] = u;
-                DFS_Visit(v, color, d, f, par, time);
+        color[u] = GREY;                //  set vertex to GREY color 
+        time = time + 1;                // time increase
+        d[u] = time;                    //  discovery time
+
+        Node* temp = LL[u].head;        //  head node for following adjacency vetices
+        
+        while(temp != NULL) {           //  traverse the adjacency vertices
+            int v = temp->vertex;      
+            if(color[v] == WHITE) {     //  check whether is it white
+                par[v] = u;             //  add parent
+                DFS_Visit(v, color, d, f, par, time);    //  call recursive DFS visit
             }
-            temp = temp->next;
+            temp = temp->next;           //  next vertex
         }
 
-        color[u] = BLACK;
-        time = time + 1;
-        f[u] = time; 
+        color[u] = BLACK;               //  set vertex to GREY color 
+        time = time + 1;                // time increase
+        f[u] = time;                    //  finishing time
 
 
-        /* write your code here
-         *
-         *
-         *
-         *
-         */
+        
+        
     }
 
     void DFS()
@@ -247,27 +244,22 @@ public:
 		// you will need to pass these as parameters to DFS_Visit
 		
 
-        for(int i=0; i<N_VERTEX; i++) {
-            color[i] = WHITE;
-            par[i] = NIL;
+        // write your code here
+
+        for(int i=0; i<N_VERTEX; i++) {    //  travarse every vertex
+            color[i] = WHITE;              //  make every vertex white
+            par[i] = NIL;                  //  make parents NULL
         }
 
-        time = 0;
+        time = 0;                          //  time variable
 
-        for(int i=0; i<N_VERTEX; i++) {
-            if(color[i] == WHITE){
-                DFS_Visit(i, color, d, f , par, time);
+        for(int i=0; i<N_VERTEX; i++) {    //  travarse each vertex
+            if(color[i] == WHITE){         //  check whether is it white
+                DFS_Visit(i, color, d, f , par, time);   //  call DFS Visit
             }
             
         }
 
-
-        /* write your code here
-         *
-         *
-         *
-         *
-         */
 
         // print the results
         printf("Vertex        : ");
