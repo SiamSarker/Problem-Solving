@@ -207,6 +207,28 @@ public:
 
     void DFS_Visit(int u, int color[], int d[], int f[], int par[], int& time)
     {
+        
+        
+        color[u] = GREY;
+        time = time + 1;
+        d[u] = time;
+
+        Node* temp = LL[u].head;
+        
+        while(temp != NULL) {
+            int v = temp->vertex;
+            if(color[v] == WHITE) {
+                par[v] = u;
+                DFS_Visit(v, color, d, f, par, time);
+            }
+            temp = temp->next;
+        }
+
+        color[u] = BLACK;
+        time = time + 1;
+        f[u] = time; 
+
+
         /* write your code here
          *
          *
@@ -224,6 +246,22 @@ public:
         int time; // tracks the time
 		// you will need to pass these as parameters to DFS_Visit
 		
+
+        for(int i=0; i<N_VERTEX; i++) {
+            color[i] = WHITE;
+            par[i] = NIL;
+        }
+
+        time = 0;
+
+        for(int i=0; i<N_VERTEX; i++) {
+            if(color[i] == WHITE){
+                DFS_Visit(i, color, d, f , par, time);
+            }
+            
+        }
+
+
         /* write your code here
          *
          *
