@@ -1,36 +1,29 @@
 #include <iostream>
-#include <string>
 using namespace std;
 
 int main(void)
 {
-    int a, b, count = 0;
+    int a;
+    string str;
     cin >> a;
-    cin >> b;
-    string str = to_string(b);
-
+    cin >> str;
     int i = 0;
     while (i < a)
     {
-        if (str[i] == '0' && count == 0)
-            cout << '0' ;
-        else if (str[i] == '1')
-        {
-            while(str[i]!='0' && i < a)
-            {
-                count++;
-                i++;
-            }
-            cout << "hello";
-            if(count > 0)
-            {
-                cout << count;
-                i++;
-            }
-            count = 0;
-        }
-        i++;
-    }
+        int count = 0;
 
+        while (i < a) {
+            if (str[i] == '1') {
+                count++;
+            }
+            else {
+                cout << count;
+                count = 0;
+            }
+            i++;
+        }
+        cout << count << endl;
+    }
+    
     return 0;
 }
