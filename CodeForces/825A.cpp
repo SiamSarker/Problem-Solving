@@ -10,13 +10,13 @@ int main(void)
     string str = to_string(b);
 
     int i = 0;
-    while (i != a)
+    while (i < a)
     {
         if (str[i] == '0' && count == 0)
             cout << '0' ;
         else if (str[i] == '1')
         {
-            while(str[i]!='0' && i != a)
+            while(str[i]!='0' && i < a)
             {
                 count++;
                 i++;
@@ -24,7 +24,7 @@ int main(void)
             cout << "hello";
             if(count > 0)
             {
-                // cout << count;
+                cout << count;
                 i++;
             }
             count = 0;
