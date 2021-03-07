@@ -14,7 +14,7 @@ int to_integer(const string &aa)
 {
     int res = 0;
     for (auto xy : aa)
-        res = (res * 10) + (xy - '0');
+        res = (res * 10) + (xy= - '0'); 
     return res;
 }
 
