@@ -2,10 +2,11 @@
 
 int digit_sum(int num)
 {
-    if (num < 10)
+    if (num >= 0 && num <=7)
         return num;
     else
-        return digit_sum(num/10) + num%10 ;
+        return 10 * digit_sum(num/8) + num%8 ;
+        // to binary return 10 * digit_sum(num/2) + num%2 ;
 }
 
 
