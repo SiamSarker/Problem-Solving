@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/siamsarker/Google Drive/Problem Solving/STL/comparator.cpp
+iostream
+-
+stdio.h
+-
+string
+-
+list
+-
+queue
+-
+iterator
+-
+algorithm
+-
+map
+-
+utility
+-
+set
+-
+stack
+-
+
