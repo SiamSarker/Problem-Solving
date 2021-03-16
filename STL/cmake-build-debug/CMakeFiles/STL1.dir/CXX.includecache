@@ -6,29 +6,3 @@
 
 #IncludeRegexTransform: 
 
-/Users/siamsarker/Google Drive/Problem Solving/STL/bitset_Sieve.cpp
-iostream
--
-stdio.h
--
-string
--
-list
--
-queue
--
-iterator
--
-algorithm
--
-map
--
-utility
--
-set
--
-stack
--
-queue
--
-

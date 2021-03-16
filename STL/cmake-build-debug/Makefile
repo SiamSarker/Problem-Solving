@@ -131,6 +131,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named STL2
+
+# Build rule for target.
+STL2: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STL2
+.PHONY : STL2
+
+# fast build rule for target.
+STL2/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/STL2.dir/build.make CMakeFiles/STL2.dir/build
+.PHONY : STL2/fast
+
+#=============================================================================
 # Target rules for targets named STL1
 
 # Build rule for target.
@@ -183,6 +196,33 @@ bitset_Sieve.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/STL1.dir/build.make CMakeFiles/STL1.dir/bitset_Sieve.cpp.s
 .PHONY : bitset_Sieve.cpp.s
 
+comparator.o: comparator.cpp.o
+
+.PHONY : comparator.o
+
+# target to build an object file
+comparator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/STL2.dir/build.make CMakeFiles/STL2.dir/comparator.cpp.o
+.PHONY : comparator.cpp.o
+
+comparator.i: comparator.cpp.i
+
+.PHONY : comparator.i
+
+# target to preprocess a source file
+comparator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/STL2.dir/build.make CMakeFiles/STL2.dir/comparator.cpp.i
+.PHONY : comparator.cpp.i
+
+comparator.s: comparator.cpp.s
+
+.PHONY : comparator.s
+
+# target to generate assembly for a file
+comparator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/STL2.dir/build.make CMakeFiles/STL2.dir/comparator.cpp.s
+.PHONY : comparator.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -220,9 +260,13 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... STL0"
 	@echo "... STL1"
+	@echo "... STL2"
 	@echo "... bitset_Sieve.o"
 	@echo "... bitset_Sieve.i"
 	@echo "... bitset_Sieve.s"
+	@echo "... comparator.o"
+	@echo "... comparator.i"
+	@echo "... comparator.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
