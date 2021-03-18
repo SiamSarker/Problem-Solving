@@ -1,26 +1,17 @@
 #include<stdio.h>
 #include<string.h>
 
-int hex2dec(char s[], int k)
-{
-    if (k == 1)
-        return s[k-1] -'0';
-    else
-    {
-        int x, y;
-        if (s[k-1] < 10)
-        {
-            x = s[k-1] - '0';
-            y = hex2dec(s, k-1);
-        }
-        else
-        {
-            x = s[k-1] -'A' + 10;
-            y = hex2dec(s, k-1);
-        }
-        
-        return 16*y + x;
-    }
+int hex2dec(char number[], int size,int pos) {
+   int add;
+   if (pos == size)
+       return 0;
+   char digit = number[size - pos - 1];
+
+    if (digit >= '0' && digit <= '9')
+        add = digit - '0';
+    else add = digit - 'A' + 10;
+
+   return 16 * hex2dec(number, size, pos + 1) + add;
 }
 
 int main()
@@ -28,7 +19,7 @@ int main()
     char str[100];
     scanf("%s", str);
     int n_bit = strlen(str);
-    int dec = hex2dec(str, n_bit);
+    int dec = hex2dec(str, n_bit, 0);
     printf("%d\n", dec);
     return 0;   
 }
