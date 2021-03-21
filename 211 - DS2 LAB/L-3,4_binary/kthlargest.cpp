@@ -14,7 +14,7 @@ int partition(int A[], int p, int r)
         {
             i++;
             int temp;
-            swap(A[i], A[j]);
+            swap(A[i], A[j]); 
         }
     }
     swap(A[i+1], A[r]);
