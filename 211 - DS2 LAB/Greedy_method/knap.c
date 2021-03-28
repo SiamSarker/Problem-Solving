@@ -26,20 +26,26 @@ int main() {
  
     float w = 50;
     int i=0;
+    float profit;
     while(w>0 && i<3) {
         Item p = items[i];
         float x;
         if(w > p.weight) {
             x = 1;
+            profit += p.value;
             printf("Take %.2f %.2f %.2f%%\n", p.value, p.weight, x*100);
         }
         else {
             x = w/p.weight;
+            profit += x*p.value;
             printf("Take %.2f %.2f %.2f%%\n", p.value, p.weight, x*100);
         }
         i++;
         w = w - x*p.weight;
     }
+
+    printf("Total profit - %.2f\n", profit);
+
     return 0;
 }
  
