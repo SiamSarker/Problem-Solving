@@ -2,32 +2,37 @@
 #include <math.h>
 
 struct result {
-    int start;
-    int end;
-    int sum;
+    double start;
+    double end;
+    double sum;
 };
 
 struct result max_crossing_subarray(int A[], int low, int mid, int high) {
     // write your code here
-int max_left, max_right;
-int left_sum = -INFINITY;
-int sum=0;
+double max_left, max_right;
+double left_sum = -INFINITY;
+double sum=0;
 
 for (int i = mid; i >= low; i--) {
             sum = sum + A[i];
             if (sum > left_sum)
+            {
                 left_sum = sum;
-            max_left = i ;
+                max_left = i ;
+            }
+                
         }
 
 sum = 0;
-int right_sum = -INFINITY;
+double right_sum = -INFINITY;
 
 for (int j = mid + 1; j <= high; j++) {
             sum = sum + A[j];
-            if (sum > right_sum)
+            if (sum > right_sum){
                 right_sum = sum;
-            max_right =j ;
+                max_right = j ;
+            }
+                
         }
 
         struct result X = {max_left, max_right,left_sum + right_sum};
@@ -41,7 +46,7 @@ struct result max_subarray(int A[], int low, int high) {
     }
     else {
         // write your code here
-         int mid=(low+high)/2;
+         double mid=(low+high)/2;
          struct result left = max_subarray(A,low,mid);
          struct result right = max_subarray(A,mid+1,high);
          struct result cross = max_crossing_subarray(A,low,mid,high);
@@ -62,14 +67,11 @@ struct result max_subarray(int A[], int low, int high) {
                     return X;
              }
          }
-
-
     }
-
 
 int main() {
     int arr[] = {1, -4, 3, 4, -2, 6, -2};
     struct result X = max_subarray(arr, 0, 6);
-    printf("Max sum subarray %d to %d. Sum = %d.\n", X.start, X.end, X.sum);
+    printf("Max sum subarray %lf to %lf. Sum = %lf.\n", X.start, X.end, X.sum);
     return 0;
 }
