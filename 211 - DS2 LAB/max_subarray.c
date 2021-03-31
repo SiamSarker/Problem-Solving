@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include<math.h>
 struct result {
     int start;
     int end;
@@ -10,33 +10,32 @@ struct result max_crossing_subarray(int A[], int low, int mid, int high) {
     // write your code here
  int sum=0;
  int max_left;
- int max_right=0;
+ int max_right;
 
-int left_sum =-999999999;
+int left_sum =-INFINITY;
    for (int i = mid; i >= low; i--) {
             sum = sum + A[i];
             if (sum > left_sum){
                 left_sum = sum;
                 max_left =i ;
             }
-                
         }
-
+int right_sum = -INFINITY;
 sum = 0;
-int right_sum = -999999999;
+
 
 
 for (int j = mid + 1; j <= high; j++) {
             sum = sum + A[j];
-            if (sum > right_sum)
-            {
-                 right_sum = sum;
-                max_right =j ;
+            if (sum > right_sum){
+                right_sum = sum;
+                max_right = j ;
             }
-               
         }
-         struct result X = {max_left, max_right,left_sum + right_sum};
-         return X;
+
+
+        struct result X = {max_left, max_right, left_sum + right_sum};
+        return X;
 
 }
 
@@ -53,17 +52,17 @@ struct result max_subarray(int A[], int low, int high) {
          struct result cross=max_crossing_subarray(A,low,mid,high);
 
 
-         if(left.sum >= right.sum && left.sum>=cross.sum){
-                struct result X = {left.start, left.end, left.sum};
-                    return X;
+         if((left.sum >= right.sum )&&(left.sum>=cross.sum)){
+                struct result X = {left.start,left.end, left.sum};
+                return X;
 
          }
-         else if(right.sum>=left.sum && right.sum>=cross.sum){
-               struct result X = {right.start, right.end, right.sum};
+         else if((right.sum>=left.sum) && (right.sum>=cross.sum)){
+               struct result X = {right.start,right.end, right.sum};
                     return X;
          }
          else{
-                struct result X = {cross.start, cross.end, cross.sum};
+                struct result X = {cross.start,cross.end, cross.sum};
                     return X;
              }
          }
@@ -74,14 +73,15 @@ struct result max_subarray(int A[], int low, int high) {
 
 int main() {
     int arr[] = {100, 113,110,85,105,102,86,63,81,101,94,106,101,79,94,90,97};
-    int change[100];
-    change[0] = -999999999;
-    for(int i = 1; i < 17; i++)
-    {
-        change[i] = arr[i] - arr[i-1];
+    int change[]={0};
+    change[0]= -INFINITY;
+    for(int i=1;i<=17;i++){
+        change[i] =arr[i]-arr[i-1];
     }
-
+    for(int i=0;i<=17;i++){
+        printf("%d %d\n",i,change[i]);
+    }
     struct result X = max_subarray(change, 0, 17);
-    printf("buy the stock on day %d, sell on day %d to gain maximum profit of %d\n", X.start-1, X.end, X.sum);
+    printf("Max sum subarray %d to %d. Sum = %d.\n", X.start, X.end, X.sum);
     return 0;
 }
