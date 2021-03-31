@@ -12,7 +12,7 @@ struct result max_crossing_subarray(int A[], int low, int mid, int high) {
  int max_left;
  int max_right=0;
 
-int left_sum =-999999999;
+int left_sum = -999999999;
    for (int i = mid; i >= low; i--) {
             sum = sum + A[i];
             if (sum > left_sum){

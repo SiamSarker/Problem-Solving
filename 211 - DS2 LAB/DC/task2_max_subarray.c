@@ -56,8 +56,14 @@ struct result max_subarray(int A[], int low, int high) {
     }
 
 int main() {
-    int arr[] = {10, 11, 7, 10, 6};
-    struct result X = max_subarray(arr, 0, 4);
-    printf("Max sum subarray %d to %d. Sum = %d.\n", X.start, X.end, X.sum);
+    int arr[] = {100, 113,110,85,105,102,86,63,81,101,94,106,101,79,94,90,97};
+    int change[100];
+    change[0]= -37574567;
+
+    for(int i=1;i<17;i++){
+        change[i] = arr[i]-arr[i-1];
+    }
+    struct result X = max_subarray(change, 0, 16);
+    printf("buy the stock on day %d, sell on day %d to gain maximum profit of %d\n", X.start-1, X.end, X.sum);
     return 0;
 }
