@@ -17,7 +17,7 @@ typedef struct Item{
 
 int cmpfunc(const void *a, const void *b)
 {
-    return (((Item*)a)->value / ((Item*)a)->value - ((Item*)b) / ((Item*)b)->weight));
+    return (((Item*)a)->value / ((Item*)a)->value - (Item*)b) / ((Item*)b)->weight);
 }
 
 int main()
