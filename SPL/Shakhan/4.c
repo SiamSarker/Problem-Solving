@@ -17,9 +17,6 @@ int main()
      
      printf("The number has %d digits which sum is to %d\n",c,sum);
 
-     
-
-
-
+    
 
 }
