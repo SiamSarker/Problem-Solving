@@ -7,11 +7,11 @@ int cmpfunc(const void * a, const void * b) {
  
 int main() {
  
-    int coins[] = {1, 5, 10, 25, 100};
+    int coins[] = {1, 5, 10, 25, 100, 1000};
 
-    qsort(coins, 5, sizeof(int), cmpfunc);
+    qsort(coins, 6, sizeof(int), cmpfunc);
 
-    int total = 345;
+    int total = 5465;
     int M = total;
     int i = 0;
     while ( M > 0)
