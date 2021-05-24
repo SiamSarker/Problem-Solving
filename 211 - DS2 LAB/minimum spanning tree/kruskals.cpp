@@ -89,6 +89,34 @@ public:
 
     void Kruskals() {
         // write your code here
+        DisjointSet S;
+        for(int i=0; i<N_VERTICES; i++)
+        {
+            S.make_set(i);
+        }
+
+        Edge edgelist[10000];
+        int nE = create_edge_list(edgelist);
+
+        sort_edge_list(edgelist, nE);
+
+        for(int i=0; i<N_VERTICES; i++)
+        {
+            for(int j=0; j < N_VERTICES; j++)
+            {
+                if(mat[i][j] != 0) {
+                    int u=i;
+				    int v=j;
+                    if(S.find_set(u) != S.find_set(v)){
+                        printf("%d %d\n", u, v);
+                        S.union_set(S.find_set(u), S.find_set(v));
+                    }
+                   
+                }
+            }
+        }
+
+
     }
 
 };
