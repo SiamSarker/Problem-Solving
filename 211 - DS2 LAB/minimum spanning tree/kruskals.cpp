@@ -102,18 +102,13 @@ public:
 
         for(int i=0; i<N_VERTICES; i++)
         {
-            for(int j=0; j < N_VERTICES; j++)
+
+            if (!S.same_set(edgelist[i].u, edgelist[i].v))
             {
-                if(mat[i][j] != 0) {
-                    int u=i;
-				    int v=j;
-                    if(S.find_set(u) != S.find_set(v)){
-                        printf("%d %d\n", u, v);
-                        S.union_set(S.find_set(u), S.find_set(v));
-                    }
-                   
-                }
+                printf("%d, %d\n", edgelist[i].u, edgelist[i].v);
+                S.union_set(edgelist[i].u, edgelist[i].v);
             }
+
         }
 
 
