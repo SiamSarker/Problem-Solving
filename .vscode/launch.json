@@ -21,8 +21,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Localadmin/Documents/projects/Problem-Solving",
-      "program": "c:/Users/Localadmin/Documents/projects/Problem-Solving/build/Debug/outDebug",
+      "cwd": "c:/Users/Localadmin/Documents/projects/Problem-Solving/HackerRank",
+      "program": "c:/Users/Localadmin/Documents/projects/Problem-Solving/HackerRank/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
